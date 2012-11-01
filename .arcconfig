@@ -1,5 +1,4 @@
 {
   "project_id" : "depot",
-  "conduit_uri" : "http://phabricator.sazboom.com",
-  "arc.land.onto.default" : "master"
+  "conduit_uri" : "http://phabricator.sazboom.com"
 }

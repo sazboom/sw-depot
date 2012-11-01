@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    #This comment is for approving changes
     @product = Product.find(params[:id])
 
     respond_to do |format|
