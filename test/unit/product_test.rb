@@ -12,7 +12,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:image_url].any?
   end
   
-  test "product prive must be positive" do
+  test "product price must be positive" do
     product = Product.new(
       title: "My Book Title",
       description: "yyy",
@@ -35,7 +35,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
   
-  test " image url" do
+  test "image url" do
     ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg 
       http://a.b.c/x/y/z/fred.gif }
       
@@ -61,6 +61,24 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     
     assert_equal ["has already been taken"],
+      product.errors[:title]
+  end
+  
+  test "product title must be at least 8 characters long" do
+    product = Product.new(
+      title: "try10chars",
+      description: "yyy",
+      price: 1,
+      image_url: "fred.gif"
+    )
+    
+    assert product.valid?, "titles with 10 characters should be valid"
+    
+    product.title = "try9chars"
+    
+    assert product.invalid?, "titles with less than 10 characters should be invalid"
+    
+    assert_equal ["must be at least 10 characters"],
       product.errors[:title]
   end
   
