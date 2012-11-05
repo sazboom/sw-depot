@@ -16,6 +16,15 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:products)
   end
+  
+  test "index should display admin controlls" do
+    get :index
+    assert_select '.list_actions' do
+      assert_select 'a', 'Show'
+      assert_select 'a', 'Edit'
+      assert_select 'a', 'Destroy'
+    end
+  end
 
   test "should get new" do
     get :new

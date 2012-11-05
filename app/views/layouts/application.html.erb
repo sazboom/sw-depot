@@ -20,6 +20,8 @@
         <li><a href="http://www..../news">News</a></li>
         <li><a href="http://www..../contact">Contact</a></li>
       </ul>
+
+	  <div class="time"><%= Time.now.to_formatted_s(:long_ordinal) %></div>
     </div>
     <div id="main">
       <%= yield %>
