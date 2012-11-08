@@ -1,10 +1,11 @@
 Depot::Application.routes.draw do
   resources :line_items
   resources :carts
+  
+  match 'store' => 'store#index', :as => :store
 
   root :to => 'store#index'
-  get "store/index"
-
+  
   resources :products
 
   # The priority is based upon order of creation:

@@ -14,14 +14,17 @@
   </div>
   <div id="columns">
     <div id="side">
+	<% if @cart %>
+      <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+        <%= render @cart %>
+      <% end %>
+    <% end %>
       <ul>
         <li><a href="http://www....">Home</a></li>
         <li><a href="http://www..../faq">Questions</a></li>
         <li><a href="http://www..../news">News</a></li>
         <li><a href="http://www..../contact">Contact</a></li>
       </ul>
-
-	  <div class="time"><%= Time.now.to_formatted_s(:long_ordinal) %></div>
     </div>
     <div id="main">
       <%= yield %>
