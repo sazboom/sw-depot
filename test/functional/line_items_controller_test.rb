@@ -43,7 +43,7 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to root_path
   end
 
   test "should create line_item via ajax" do
