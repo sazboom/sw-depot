@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  skip_before_filter :authorize, only: :create
   # GET /line_items
   # GET /line_items.json
   def index
@@ -44,11 +45,11 @@ class LineItemsController < ApplicationController
     
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
-    @line_item.product = product  
+    @line_item.product = product 
     
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to root_url }
+        format.html { redirect_to store_url }
         format.js { @current_item = @line_item }
         format.json { render json: @line_item,
           status: :created, location: @line_item }
@@ -91,7 +92,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { 
         if @cart.line_items.empty?
-          redirect_to root_path
+          redirect_to store_path
         else
           redirect_to @cart
         end 
