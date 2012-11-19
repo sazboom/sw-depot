@@ -12,6 +12,7 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+#current user for test
 one:
   name: dave
   password_digest: <%= BCrypt::Password.create('secret') %>

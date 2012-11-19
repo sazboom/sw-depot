@@ -28,6 +28,12 @@ gem 'will_paginate', '~> 3.0'
 
 gem "annotate", "~> 2.5.0"
 
+gem "rspec"
+
+gem "rspec-rails"
+
+gem "factory_girl"
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -59,17 +59,21 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    #I don't think my problem is actually with accessing params;
+    #I suspect the problem is something I don't understand about the order
+    #callbacks exectue, leading my variables to have unexpected values when 
+    #evaluated.
     @user = User.find(params[:id])
-
+    
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to users_url,
-          notice: "User #{@user.name} was successfully updated." }
-        format.json { head :no_content }
+         format.html { redirect_to users_url,
+            notice: "User #{@user.name} was successfully updated." }
+          format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors,
-          status: :unprocessable_entity }
+          format.html { render action: "edit" }
+          format.json { render json: @user.errors,
+            status: :unprocessable_entity }
       end
     end
   end

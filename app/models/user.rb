@@ -14,12 +14,14 @@ class User < ActiveRecord::Base
   attr_accessor :current_password
   
   validates :name, presence: true, uniqueness: true
-  before_update :current_password_is_correct?
+  validate :current_password_is_correct?, on: :update
   after_destroy :ensure_an_admin_remains
     
   has_secure_password
   
   private
+
+  
     def ensure_an_admin_remains
       if User.count.zero?
         raise "Can't delete last user"
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
     end
 
     def current_password_is_correct?
-      unless authenticate(current_password)
+      unless User.find_by_id(id).try(:authenticate, current_password) 
         errors.add(:current_password,"is incorrect")
         false
       end

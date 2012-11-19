@@ -14,34 +14,35 @@
   <% end %>
 
   <fieldset>
-  <legend>Enter current login</legend>
-
-  <div>
-    <%= f.label :name %>:
-    <%= f.text_field :name, size: 40 %>
-  </div>
+  	<legend>Enter current password</legend>
+	  <p>You must enter the current user password before making changes to this account.</p>
   
-  <div>
-    <%= f.label :current_password, 'Current Password:' %>
-    <%= f.password_field :current_password, size: 40 %>
-  </div>
+	  <div>
+	    <%= f.label :current_password, 'Current Password' %>:
+	    <%= f.password_field :current_password, size: 40 %>
+	  </div>
   </fieldset>
 
   <fieldset>
-  <legend>Enter new password</legend>
-  <div>
-    <%= f.label :password, 'Password' %>:
-    <%= f.password_field :password, size: 40 %>
-  </div>
+	<legend>Enter new user details</legend>
+	  <div>
+	    <%= f.label :name, 'Name' %>:
+	    <%= f.text_field :name, size: 40 %>
+	  </div>
 
-  <div>
-    <%= f.label :password_confirmation, 'Confirm' %>:
-    <%= f.password_field :password_confirmation, size: 40 %>
-  </div>
+	  <div>
+	    <%= f.label :password, 'Password' %>:
+	    <%= f.password_field :password, size: 40 %>
+	  </div>
 
-  <div>
-    <%= f.submit %>
-  </div>
+	  <div>
+	    <%= f.label :password_confirmation, 'Confirm' %>:
+	    <%= f.password_field :password_confirmation, size: 40 %>
+	  </div>
+
+	  <div>
+	    <%= f.submit "Update User", class: "submit" %>
+	  </div>
  </fieldset>
 <% end %>
 
